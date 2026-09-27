@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Choose Your Character — HAR Animasi</title>
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index" class="brand"><img src="assets/logo.png" class="brand-logo" alt="HAR Animasi"></a>
+    <div class="nav-links"><a href="index">Home</a><a href="casting">Open Casting</a></div>
+    <div class="nav-actions" id="navAuthSlot"></div>
+    <button class="nav-toggle" aria-label="Menu"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+  </div>
+</nav>
+
+<div class="container section">
+  <div class="section-header">
+    <h2>CHOOSE YOUR CHARACTER</h2>
+    <p>Pilih karakter yang paling sesuai dengan karakter suara dan kemampuan voice acting kamu.</p>
+  </div>
+
+  <div id="categoryLabel" class="badge badge-info mb-16" style="display:none;"></div>
+
+  <div id="characterGrid" class="grid grid-4"></div>
+
+  <div id="selectedBar" class="card selected-character-bar hidden">
+    <div class="selected-character-info">
+      <div class="char-icon" id="selectedCharIcon"></div>
+      <div class="selected-character-text">
+        <div style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; font-weight:700;">SELECTED CHARACTER</div>
+        <div class="name" id="selectedCharName">-</div>
+        <div class="meta" id="selectedCharMeta">-</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="continueBtn">CONTINUE TO AUDITION
+      <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <div id="noSelectionHint" class="flex items-center gap-8 mt-16 text-secondary" style="font-size:13px;">
+    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    PLEASE SELECT A CHARACTER
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="character-selection.js"></script>
+<script>initCharacterSelection();</script>
+</body>
+</html>
