@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>Castings — Admin — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent">
+    <div class="section-toolbar">
+      <div class="page-header" style="margin-bottom:0;">
+        <h1>CASTINGS</h1>
+        <p class="text-secondary">Create and manage casting calls open to voice actors.</p>
+      </div>
+      <button class="btn btn-primary" id="newCastingBtn">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        NEW CASTING
+      </button>
+    </div>
+
+    <div id="castingsTableWrap">
+      <div class="card skeleton" style="height:320px;"></div>
+    </div>
+  </div>
+</main>
+
+<div id="modalRoot"></div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="admin.js"></script>
+<script>initAdminCastings();</script>
+</body>
+</html>
