@@ -134,17 +134,17 @@ async function loadCastingsTable() {
   if (error) { wrap.innerHTML = errorBox(error.message); return; }
   if (!data || data.length === 0) { wrap.innerHTML = emptyBox('NO CASTINGS YET', 'Create your first casting call to get started.'); return; }
 
-  wrap.innerHTML = `<div class="table-wrap"><table class="data-table">
+  wrap.innerHTML = `<div class="table-wrap"><table class="data-table stack-mobile">
     <thead><tr><th>Title</th><th>Voice Type</th><th>Age Range</th><th>Deadline</th><th>Status</th><th>Characters</th><th>Actions</th></tr></thead>
     <tbody>${data.map(c => `
       <tr>
-        <td class="cell-title">${escapeHtml(c.title)}</td>
-        <td>${escapeHtml(c.voice_type || '-')}</td>
-        <td>${escapeHtml(c.age_range || '-')}</td>
-        <td>${formatDate(c.deadline)}</td>
-        <td><span class="badge ${statusBadgeClass(c.status)}">${escapeHtml(c.status)}</span></td>
-        <td>${c.casting_characters?.[0]?.count ?? 0}</td>
-        <td><div class="table-actions">
+        <td class="cell-title" data-label="Title">${escapeHtml(c.title)}</td>
+        <td data-label="Voice Type">${escapeHtml(c.voice_type || '-')}</td>
+        <td data-label="Age Range">${escapeHtml(c.age_range || '-')}</td>
+        <td data-label="Deadline">${formatDate(c.deadline)}</td>
+        <td data-label="Status"><span class="badge ${statusBadgeClass(c.status)}">${escapeHtml(c.status)}</span></td>
+        <td data-label="Characters">${c.casting_characters?.[0]?.count ?? 0}</td>
+        <td data-label="Actions"><div class="table-actions">
           <a href="admin-characters?casting=${c.id}" class="btn btn-outline btn-sm">CHARACTERS</a>
           <button class="btn btn-secondary btn-sm" data-edit="${c.id}">EDIT</button>
           <button class="btn btn-danger btn-sm" data-delete="${c.id}" data-title="${escapeHtml(c.title)}">DELETE</button>
@@ -290,20 +290,20 @@ async function loadCharactersTable() {
   if (error) { wrap.innerHTML = errorBox(error.message); return; }
   if (!data || data.length === 0) { wrap.innerHTML = emptyBox('NO CHARACTERS YET', 'Add the first character voice actors can audition for.'); return; }
 
-  wrap.innerHTML = `<div class="table-wrap"><table class="data-table">
+  wrap.innerHTML = `<div class="table-wrap"><table class="data-table stack-mobile">
     <thead><tr><th>#</th><th>Name</th><th>Category</th><th>Voice Type</th><th>Active</th><th>Sample</th><th>Actions</th></tr></thead>
     <tbody>${data.map(c => `
       <tr>
-        <td>${c.sort_order}</td>
-        <td class="cell-title">${escapeHtml(c.name)}</td>
-        <td>${escapeHtml(c.category || '-')}</td>
-        <td>${escapeHtml(c.voice_type || '-')}</td>
-        <td><label class="toggle-switch"><input type="checkbox" data-toggle-active="${c.id}" ${c.is_active ? 'checked' : ''}><span class="toggle-track"></span></label></td>
-        <td>
+        <td data-label="#">${c.sort_order}</td>
+        <td class="cell-title" data-label="Name">${escapeHtml(c.name)}</td>
+        <td data-label="Category">${escapeHtml(c.category || '-')}</td>
+        <td data-label="Voice Type">${escapeHtml(c.voice_type || '-')}</td>
+        <td data-label="Active"><label class="toggle-switch"><input type="checkbox" data-toggle-active="${c.id}" ${c.is_active ? 'checked' : ''}><span class="toggle-track"></span></label></td>
+        <td data-label="Sample">
           ${c.sample_url ? `<audio controls style="height:30px; max-width:150px; margin-bottom:6px; display:block;" src="${c.sample_url}"></audio>` : ''}
           <button class="btn btn-outline btn-sm" data-upload-sample="${c.id}">${c.sample_url ? 'REPLACE' : 'UPLOAD'} SAMPLE</button>
         </td>
-        <td><div class="table-actions">
+        <td data-label="Actions"><div class="table-actions">
           <button class="btn btn-secondary btn-sm" data-edit-char="${c.id}">EDIT</button>
           <button class="btn btn-danger btn-sm" data-delete-char="${c.id}" data-name="${escapeHtml(c.name)}">DELETE</button>
         </div></td>
@@ -503,23 +503,23 @@ function renderAdminApplications() {
   const wrap = document.getElementById('applicationsTableWrap');
   if (filtered.length === 0) { wrap.innerHTML = emptyBox('NO APPLICATIONS', 'No applications match this filter.'); return; }
 
-  wrap.innerHTML = `<div class="table-wrap"><table class="data-table">
+  wrap.innerHTML = `<div class="table-wrap"><table class="data-table stack-mobile">
     <thead><tr><th>Actor</th><th>Character</th><th>Casting</th><th>Status</th><th>Submitted</th><th>Recording</th><th>Actions</th></tr></thead>
     <tbody>${filtered.map(a => {
       const hasAudio = !!a.voice_auditions?.storage_path;
       const isPlaying = adminPlayingId === a.id;
       return `
       <tr>
-        <td><div class="cell-title">${escapeHtml(a.profiles?.stage_name || a.profiles?.full_name || '-')}</div><div class="cell-sub">${escapeHtml(a.profiles?.full_name || '')}</div></td>
-        <td>${escapeHtml(a.casting_characters?.name || '-')}</td>
-        <td>${escapeHtml(a.castings?.title || '-')}</td>
-        <td><span class="badge ${statusBadgeClass(a.status)}">${escapeHtml(a.status)}</span></td>
-        <td>${formatDate(a.created_at)}</td>
-        <td>${hasAudio ? `
+        <td data-label="Actor"><div class="cell-title">${escapeHtml(a.profiles?.stage_name || a.profiles?.full_name || '-')}</div><div class="cell-sub">${escapeHtml(a.profiles?.full_name || '')}</div></td>
+        <td data-label="Character">${escapeHtml(a.casting_characters?.name || '-')}</td>
+        <td data-label="Casting">${escapeHtml(a.castings?.title || '-')}</td>
+        <td data-label="Status"><span class="badge ${statusBadgeClass(a.status)}">${escapeHtml(a.status)}</span></td>
+        <td data-label="Submitted">${formatDate(a.created_at)}</td>
+        <td data-label="Recording">${hasAudio ? `
           <button class="btn btn-outline btn-sm btn-icon quick-play-audio" data-id="${a.id}" data-path="${escapeHtml(a.voice_auditions.storage_path)}" aria-label="Test play recording">
             <svg class="icon" viewBox="0 0 24 24">${isPlaying ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M5 3l14 9-14 9V3z"/>'}</svg>
           </button>` : `<span class="text-secondary" style="font-size:12px;">No audio</span>`}</td>
-        <td><button class="btn btn-primary btn-sm" data-review="${a.id}">REVIEW</button></td>
+        <td data-label="Actions"><button class="btn btn-primary btn-sm" data-review="${a.id}">REVIEW</button></td>
       </tr>
     `; }).join('')}</tbody>
   </table></div>`;
@@ -680,25 +680,29 @@ function renderActors() {
   const wrap = document.getElementById('actorsTableWrap');
   if (filtered.length === 0) { wrap.innerHTML = emptyBox('NO VOICE ACTORS FOUND', 'Try a different search.'); return; }
 
-  wrap.innerHTML = `<div class="table-wrap"><table class="data-table">
+  wrap.innerHTML = `<div class="table-wrap"><table class="data-table stack-mobile">
     <thead><tr><th>Name</th><th>City</th><th>Voice Type</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th></tr></thead>
     <tbody>${filtered.map(p => `
       <tr>
-        <td><div class="flex items-center gap-12">
+        <td data-label="Name"><div class="flex items-center gap-12">
           <div class="avatar avatar-sm">${initials(p.stage_name || p.full_name)}</div>
           <div><div class="cell-title">${escapeHtml(p.stage_name || p.full_name)}</div><div class="cell-sub">${escapeHtml(p.full_name)}</div></div>
         </div></td>
-        <td>${escapeHtml(p.city || '-')}</td>
-        <td>${escapeHtml(p.voice_type || '-')}</td>
-        <td><span class="badge ${p.role === 'admin' ? 'badge-info' : ''}">${escapeHtml(p.role)}</span></td>
-        <td><span class="badge ${p.status === 'active' ? 'badge-open' : 'badge-rejected'}">${escapeHtml(p.status)}</span></td>
-        <td>${formatDate(p.created_at)}</td>
-        <td><button class="btn btn-outline btn-sm" data-view="${p.id}">VIEW</button></td>
+        <td data-label="City">${escapeHtml(p.city || '-')}</td>
+        <td data-label="Voice Type">${escapeHtml(p.voice_type || '-')}</td>
+        <td data-label="Role"><span class="badge ${p.role === 'admin' ? 'badge-info' : ''}">${escapeHtml(p.role)}</span></td>
+        <td data-label="Status"><span class="badge ${p.status === 'active' ? 'badge-open' : 'badge-rejected'}">${escapeHtml(p.status)}</span></td>
+        <td data-label="Joined">${formatDate(p.created_at)}</td>
+        <td data-label="Actions"><div class="table-actions">
+          <button class="btn btn-outline btn-sm" data-view="${p.id}">VIEW</button>
+          ${p.id === currentAdminProfileId ? '' : `<button class="btn btn-danger btn-sm" data-delete="${p.id}">HAPUS</button>`}
+        </div></td>
       </tr>
     `).join('')}</tbody>
   </table></div>`;
 
   wrap.querySelectorAll('[data-view]').forEach(btn => btn.addEventListener('click', () => openActorModal(filtered.find(p => p.id === btn.dataset.view))));
+  wrap.querySelectorAll('[data-delete]').forEach(btn => btn.addEventListener('click', () => confirmDeleteActor(filtered.find(p => p.id === btn.dataset.delete))));
 }
 
 function openActorModal(actor) {
@@ -734,6 +738,13 @@ function openActorModal(actor) {
           <h4 style="margin-bottom:10px; font-family:var(--font-display); font-size:13px; text-transform:uppercase;">Voice Samples</h4>
           <div id="actorSamplesList" class="text-secondary" style="font-size:13px;">Loading...</div>
         </div>
+
+        ${isSelf ? '' : `
+        <div class="mt-24 danger-zone">
+          <h4>Danger Zone</h4>
+          <p>Permanently delete this account and all of their data (profile, samples, auditions, applications). This cannot be undone.</p>
+          <button class="btn btn-danger btn-sm" id="deleteActorBtn">HAPUS AKUN INI</button>
+        </div>`}
       </div>
       <div class="modal-actions">
         <button class="btn btn-secondary" id="closeActorModal">CLOSE</button>
@@ -745,9 +756,63 @@ function openActorModal(actor) {
   document.getElementById('actorActiveToggle').addEventListener('change', (e) => toggleActorField(actor.id, 'status', e.target.checked ? 'active' : 'suspended'));
   if (!isSelf) {
     document.getElementById('actorAdminToggle').addEventListener('change', (e) => toggleActorField(actor.id, 'role', e.target.checked ? 'admin' : 'voice_actor'));
+    document.getElementById('deleteActorBtn').addEventListener('click', () => confirmDeleteActor(actor));
   }
 
   loadActorSamples(actor.id);
+}
+
+function confirmDeleteActor(actor) {
+  if (!actor || actor.id === currentAdminProfileId) return;
+  const name = actor.stage_name || actor.full_name || 'this actor';
+  document.getElementById('modalRoot').innerHTML = `<div class="modal-overlay active"><div class="modal">
+    <div class="modal-title">Delete Account?</div>
+    <div class="modal-body">
+      This will permanently delete <strong>${escapeHtml(name)}</strong>'s profile, voice samples, auditions and applications. This cannot be undone.
+      <div class="field mt-16" style="margin-bottom:0;">
+        <label class="label">Type "${escapeHtml(name)}" to confirm</label>
+        <input class="input" id="deleteActorConfirmInput" autocomplete="off">
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="cancelDeleteActor">CANCEL</button>
+      <button class="btn btn-danger" id="confirmDeleteActorBtn" disabled>DELETE ACCOUNT</button>
+    </div></div></div>`;
+
+  const input = document.getElementById('deleteActorConfirmInput');
+  const confirmBtn = document.getElementById('confirmDeleteActorBtn');
+  input.addEventListener('input', () => { confirmBtn.disabled = input.value.trim() !== name; });
+  document.getElementById('cancelDeleteActor').addEventListener('click', closeAdminModal);
+  confirmBtn.addEventListener('click', async () => {
+    confirmBtn.disabled = true; confirmBtn.innerHTML = '<span class="spinner"></span> Deleting...';
+    await deleteActorAccount(actor.id);
+  });
+}
+
+async function deleteActorAccount(actorId) {
+  // Best-effort cleanup of storage files owned by this user (client can only
+  // remove the DB profile + storage objects; fully deleting the underlying
+  // Supabase Auth user requires the service_role key on a trusted server and
+  // is not done here — see admin-actors delete note in README).
+  try {
+    const [samples, auditions] = await Promise.all([
+      supabaseClient.storage.from(BUCKET_VOICE_SAMPLES).list(actorId),
+      supabaseClient.storage.from(BUCKET_VOICE_AUDITIONS).list(actorId)
+    ]);
+    if (samples.data?.length) {
+      await supabaseClient.storage.from(BUCKET_VOICE_SAMPLES).remove(samples.data.map(f => `${actorId}/${f.name}`));
+    }
+    if (auditions.data?.length) {
+      await supabaseClient.storage.from(BUCKET_VOICE_AUDITIONS).remove(auditions.data.map(f => `${actorId}/${f.name}`));
+    }
+  } catch (e) { /* non-fatal — proceed to delete the profile regardless */ }
+
+  const { error } = await supabaseClient.from('profiles').delete().eq('id', actorId);
+  closeAdminModal();
+  if (error) { showToast('Failed to delete account: ' + friendlyDbError(error), 'error', 6000); return; }
+  allActors = allActors.filter(a => a.id !== actorId);
+  showToast('Account deleted.', 'success');
+  renderActors();
 }
 
 async function toggleActorField(actorId, field, value) {
