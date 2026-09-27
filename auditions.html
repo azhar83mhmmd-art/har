@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>My Auditions — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent">
+    <div class="page-header">
+      <h1>MY AUDITIONS</h1>
+      <p class="text-secondary">Track the status of every audition you've submitted.</p>
+    </div>
+
+    <div class="tabs" id="statusTabs">
+      <button class="tab-btn active" data-status="all">All</button>
+      <button class="tab-btn" data-status="pending">Pending</button>
+      <button class="tab-btn" data-status="reviewing">Reviewing</button>
+      <button class="tab-btn" data-status="shortlisted">Shortlisted</button>
+      <button class="tab-btn" data-status="selected">Selected</button>
+      <button class="tab-btn" data-status="rejected">Rejected</button>
+    </div>
+
+    <div id="auditionsList" class="grid grid-3">
+      <div class="card skeleton" style="height:180px;"></div>
+      <div class="card skeleton" style="height:180px;"></div>
+      <div class="card skeleton" style="height:180px;"></div>
+    </div>
+  </div>
+</main>
+
+<audio id="reviewPlayer" class="hidden"></audio>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="dashboard.js"></script>
+<script>initAuditionsPage();</script>
+</body>
+</html>
