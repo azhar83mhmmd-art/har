@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>Settings — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent" style="max-width:620px;">
+    <div class="page-header">
+      <h1>SETTINGS</h1>
+      <p class="text-secondary">Manage your account access.</p>
+    </div>
+
+    <div class="card mb-16">
+      <div class="detail-block" style="margin-bottom:0;">
+        <h4>ACCOUNT EMAIL</h4>
+        <p id="accountEmail">-</p>
+      </div>
+    </div>
+
+    <div class="card mb-16">
+      <h3 class="mb-16" style="font-family:var(--font-display); font-size:16px; font-weight:800; text-transform:uppercase;">Change Password</h3>
+      <form id="passwordForm" novalidate>
+        <div class="field">
+          <label class="label" for="newPassword">New Password</label>
+          <input class="input" type="password" id="newPassword" name="newPassword" placeholder="Min. 6 characters">
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label class="label" for="confirmNewPassword">Confirm New Password</label>
+          <input class="input" type="password" id="confirmNewPassword" name="confirmNewPassword">
+          <div class="field-error"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">UPDATE PASSWORD</button>
+      </form>
+    </div>
+
+    <div class="card" style="border-color:var(--danger);">
+      <h3 class="mb-8" style="font-family:var(--font-display); font-size:16px; font-weight:800; text-transform:uppercase; color:var(--danger);">Log Out</h3>
+      <p class="text-secondary mb-16" style="font-size:13px;">Sign out of HAR Animasi on this device.</p>
+      <button class="btn btn-danger" id="logoutSettingsBtn">LOGOUT</button>
+    </div>
+  </div>
+</main>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="auth.js"></script>
+<script src="dashboard.js"></script>
+<script>initSettingsPage();</script>
+</body>
+</html>
