@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>My Profile — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent" style="max-width:820px;">
+    <div class="page-header">
+      <h1>MY PROFILE</h1>
+      <p class="text-secondary">Keep your voice actor profile up to date — this is what admins see when reviewing your auditions.</p>
+    </div>
+
+    <div class="card mb-16">
+      <form id="profileForm" novalidate>
+        <div class="form-row-2">
+          <div class="field">
+            <label class="label" for="fullName">Full Name</label>
+            <input class="input" id="fullName" name="fullName" placeholder="Your legal name">
+            <div class="field-error"></div>
+          </div>
+          <div class="field">
+            <label class="label" for="stageName">Stage Name</label>
+            <input class="input" id="stageName" name="stageName" placeholder="Optional">
+            <div class="field-error"></div>
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="field">
+            <label class="label" for="age">Age</label>
+            <input class="input" type="number" min="5" max="120" id="age" name="age">
+            <div class="field-error"></div>
+          </div>
+          <div class="field">
+            <label class="label" for="city">City</label>
+            <input class="input" id="city" name="city">
+            <div class="field-error"></div>
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="field">
+            <label class="label" for="whatsapp">WhatsApp</label>
+            <input class="input" id="whatsapp" name="whatsapp">
+            <div class="field-error"></div>
+          </div>
+          <div class="field">
+            <label class="label" for="voiceType">Voice Type</label>
+            <select class="select" id="voiceType" name="voiceType"></select>
+            <div class="field-error"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="experience">Experience</label>
+          <textarea class="textarea" id="experience" name="experience"></textarea>
+        </div>
+        <div class="form-row-2">
+          <div class="field">
+            <label class="label" for="equipment">Equipment</label>
+            <input class="input" id="equipment" name="equipment">
+          </div>
+          <div class="field">
+            <label class="label" for="software">Software</label>
+            <input class="input" id="software" name="software">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="aboutMe">About Me</label>
+          <textarea class="textarea" id="aboutMe" name="aboutMe"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-8" id="saveProfileBtn">SAVE CHANGES</button>
+      </form>
+    </div>
+
+    <div class="page-header">
+      <h1 style="font-size:20px;">VOICE SAMPLES</h1>
+      <p class="text-secondary">Upload short samples of your voice so admins can get a feel for your range.</p>
+    </div>
+
+    <div class="card">
+      <div class="dropzone" id="sampleDropzone">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M17 8l-5-5-5 5M12 3v12"/></svg>
+        <div><strong>Click to upload</strong> or drag an audio file here</div>
+        <div style="font-size:11.5px; margin-top:4px;">MP3, WAV, M4A, OGG, WEBM — max 15MB</div>
+        <input type="file" id="sampleFileInput" accept="audio/*" class="hidden">
+      </div>
+      <div id="uploadProgressWrap" class="hidden mt-16">
+        <div class="progress-bar"><div class="progress-bar-fill" id="uploadProgressFill" style="width:0%;"></div></div>
+      </div>
+      <div id="sampleList" class="mt-24"></div>
+    </div>
+  </div>
+</main>
+
+<div class="modal-overlay" id="deleteSampleModal">
+  <div class="modal">
+    <div class="modal-title">DELETE SAMPLE?</div>
+    <div class="modal-body">This voice sample will be permanently removed and can't be recovered.</div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('deleteSampleModal')">CANCEL</button>
+      <button class="btn btn-danger" id="confirmDeleteSampleBtn">DELETE</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="auth.js"></script>
+<script src="dashboard.js"></script>
+<script>initProfilePage();</script>
+</body>
+</html>
