@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HAR Animasi — Voice Actor Portal</title>
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index" class="brand">
+      <img src="assets/logo.png" class="brand-logo" alt="HAR Animasi">
+    </a>
+    <div class="nav-links">
+      <a href="index" class="active">Home</a>
+      <a href="casting">Open Casting</a>
+    </div>
+    <div class="nav-actions" id="navAuthSlot"></div>
+    <button class="nav-toggle" aria-label="Menu">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <h1>BECOME A VOICE OF <span class="accent-text">HAR ANIMASI</span></h1>
+    <p>Your voice can become part of our animation.</p>
+    <div class="hero-actions">
+      <a href="casting" class="btn btn-primary">VIEW OPEN CASTING</a>
+      <a href="register" class="btn btn-secondary">JOIN AS VOICE ACTOR</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>WHY JOIN HAR ANIMASI</h2>
+      <p>A place to grow your voice acting craft alongside a real production team.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card">
+        <div class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <h4 class="mb-8" style="font-weight:800;">CREATIVE EXPERIENCE</h4>
+        <p class="text-secondary" style="font-size:13px;">Bring characters to life in original animated stories.</p>
+      </div>
+      <div class="card">
+        <div class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 3.13a4 4 0 010 7.75M8.5 10a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+        <h4 class="mb-8" style="font-weight:800;">GROW TOGETHER</h4>
+        <p class="text-secondary" style="font-size:13px;">Develop your craft as the studio grows.</p>
+      </div>
+      <div class="card">
+        <div class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg></div>
+        <h4 class="mb-8" style="font-weight:800;">VOICE ACTING</h4>
+        <p class="text-secondary" style="font-size:13px;">Real casting, real direction, real scripts.</p>
+      </div>
+      <div class="card">
+        <div class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h4 class="mb-8" style="font-weight:800;">TEAMWORK</h4>
+        <p class="text-secondary" style="font-size:13px;">Collaborate closely with the HAR Animasi team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header">
+      <h2>HOW IT WORKS</h2>
+      <p>From registration to result — a clear, professional casting flow.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><h4>REGISTER</h4><p>Create your Voice Actor account.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h4>COMPLETE PROFILE</h4><p>Add your voice details and experience.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h4>CHOOSE CASTING</h4><p>Browse open casting calls.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h4>CHOOSE CHARACTER</h4><p>Pick the character that fits your voice.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h4>READ DIALOG</h4><p>Review the script and voice direction.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h4>RECORD VOICE</h4><p>Record directly in your browser.</p></div>
+      <div class="step-card"><div class="step-num">7</div><h4>SUBMIT AUDITION</h4><p>Preview, then send your audition.</p></div>
+      <div class="step-card"><div class="step-num">8</div><h4>WAIT FOR REVIEW</h4><p>Track your status in real time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>OPEN CASTING</h2>
+      <p>Current casting calls open for submission.</p>
+    </div>
+    <div id="homeCastingList" class="grid grid-3"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">© 2026 HAR Animasi. All rights reserved.</div>
+</footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script>
+async function loadHomeCastings() {
+  const list = document.getElementById('homeCastingList');
+  list.innerHTML = Array.from({length:3}).map(() =>
+    `<div class="card skeleton" style="height:150px;"></div>`).join('');
+
+  const { data, error } = await supabaseClient
+    .from('castings')
+    .select('id, title, voice_type, age_range, deadline, status, casting_characters(count)')
+    .eq('status', 'open')
+    .order('created_at', { ascending: false })
+    .limit(6);
+
+  if (error) {
+    list.innerHTML = `<div class="state-box" style="grid-column:1/-1;">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="state-title">Failed to load casting</div>
+      <p>${escapeHtml(error.message)}</p>
+    </div>`;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    list.innerHTML = `<div class="state-box" style="grid-column:1/-1;">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <div class="state-title">NO OPEN CASTING</div>
+      <p>Check back soon for new casting calls.</p>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = data.map(c => `
+    <div class="card card-hover casting-card">
+      <div class="top">
+        <h3>${escapeHtml(c.title)}</h3>
+        <span class="badge badge-open">Open</span>
+      </div>
+      <div class="casting-meta">
+        <span><svg class="icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/></svg>${escapeHtml(c.voice_type || '-')}</span>
+        <span><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${formatDate(c.deadline)}</span>
+        <span><svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg>${c.casting_characters?.[0]?.count ?? 0} characters</span>
+      </div>
+      <a href="casting-detail?id=${c.id}" class="btn btn-primary btn-block">VIEW CASTING</a>
+    </div>
+  `).join('');
+}
+loadHomeCastings();
+</script>
+</body>
+</html>
