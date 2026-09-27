@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Casting Detail — HAR Animasi</title>
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index" class="brand"><img src="assets/logo.png" class="brand-logo" alt="HAR Animasi"></a>
+    <div class="nav-links">
+      <a href="index">Home</a>
+      <a href="casting" class="active">Open Casting</a>
+    </div>
+    <div class="nav-actions" id="navAuthSlot"></div>
+    <button class="nav-toggle" aria-label="Menu"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+  </div>
+</nav>
+
+<div class="container section" id="castingDetailRoot">
+  <div class="card skeleton" style="height:320px;"></div>
+</div>
+
+<footer class="footer"><div class="container">© 2026 HAR Animasi. All rights reserved.</div></footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="casting.js"></script>
+<script>loadCastingDetail();</script>
+</body>
+</html>
