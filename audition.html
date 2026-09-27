@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Audition — HAR Animasi</title>
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index" class="brand"><img src="assets/logo.png" class="brand-logo" alt="HAR Animasi"></a>
+    <div class="nav-links"><a href="index">Home</a><a href="casting">Open Casting</a></div>
+    <div class="nav-actions" id="navAuthSlot"></div>
+    <button class="nav-toggle" aria-label="Menu"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+  </div>
+</nav>
+
+<div class="container section" style="max-width:760px;">
+  <div id="auditionRoot">
+    <div class="card skeleton" style="height:400px;"></div>
+  </div>
+</div>
+
+<!-- SUBMIT CONFIRMATION MODAL -->
+<div class="modal-overlay" id="submitModal">
+  <div class="modal">
+    <div class="modal-title">SUBMIT AUDITION?</div>
+    <div class="modal-body">Pastikan rekaman suara kamu sudah terdengar jelas dan sesuai dengan karakter yang dipilih.</div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="cancelSubmitBtn">CANCEL</button>
+      <button class="btn btn-primary" id="confirmSubmitBtn">SUBMIT RECORDING</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="audition.js"></script>
+<script>initAuditionPage();</script>
+</body>
+</html>
