@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>Characters — Admin — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent">
+    <a href="admin-castings" class="text-secondary flex items-center gap-8 mb-16" style="font-size:12.5px; font-weight:700;">
+      <svg class="icon" viewBox="0 0 24 24" style="width:15px;height:15px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> BACK TO CASTINGS
+    </a>
+
+    <div class="section-toolbar">
+      <div class="page-header" style="margin-bottom:0;" id="castingContextHeader">
+        <h1>CHARACTERS</h1>
+        <p class="text-secondary">Loading casting...</p>
+      </div>
+      <button class="btn btn-primary" id="newCharacterBtn">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        ADD CHARACTER
+      </button>
+    </div>
+
+    <div id="charactersTableWrap">
+      <div class="card skeleton" style="height:320px;"></div>
+    </div>
+  </div>
+</main>
+
+<div id="modalRoot"></div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="admin.js"></script>
+<script>initAdminCharacters();</script>
+</body>
+</html>
