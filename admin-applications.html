@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>Applications — Admin — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent">
+    <div class="page-header">
+      <h1>APPLICATIONS</h1>
+      <p class="text-secondary">Review submitted auditions and update their status.</p>
+    </div>
+
+    <div class="section-toolbar">
+      <div class="tabs" id="appStatusTabs" style="margin-bottom:0;">
+        <button class="tab-btn active" data-status="all">All</button>
+        <button class="tab-btn" data-status="pending">Pending</button>
+        <button class="tab-btn" data-status="reviewing">Reviewing</button>
+        <button class="tab-btn" data-status="shortlisted">Shortlisted</button>
+        <button class="tab-btn" data-status="selected">Selected</button>
+        <button class="tab-btn" data-status="rejected">Rejected</button>
+      </div>
+      <select class="select" id="castingFilterSelect" style="max-width:260px;">
+        <option value="all">All Castings</option>
+      </select>
+    </div>
+
+    <div id="applicationsTableWrap">
+      <div class="card skeleton" style="height:320px;"></div>
+    </div>
+  </div>
+</main>
+
+<audio id="adminReviewPlayer" class="hidden"></audio>
+<div id="modalRoot"></div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="admin.js"></script>
+<script>initAdminApplications();</script>
+</body>
+</html>
