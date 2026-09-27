@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>Dashboard — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent">
+    <div class="card skeleton" style="height:120px; margin-bottom:22px;"></div>
+    <div class="grid grid-4" style="margin-bottom:28px;">
+      <div class="card skeleton" style="height:110px;"></div>
+      <div class="card skeleton" style="height:110px;"></div>
+      <div class="card skeleton" style="height:110px;"></div>
+      <div class="card skeleton" style="height:110px;"></div>
+    </div>
+    <div class="card skeleton" style="height:280px;"></div>
+  </div>
+</main>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="dashboard.js"></script>
+<script>initDashboardPage();</script>
+</body>
+</html>
