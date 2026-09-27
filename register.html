@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Register — HAR Animasi</title>
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="auth-wrap">
+  <div class="auth-card register-wrap">
+    <a href="index" class="brand" style="justify-content:center; margin-bottom:24px;">
+      <img src="assets/logo.png" class="auth-logo" alt="HAR Animasi">
+    </a>
+    <h1>Join as Voice Actor</h1>
+    <p class="sub">No registration fee. Tell us about your voice.</p>
+
+    <form id="registerForm" novalidate>
+      <div class="form-row-2">
+        <div class="field">
+          <label class="label" for="fullName">Full Name</label>
+          <input class="input" id="fullName" name="fullName" placeholder="Your legal name">
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label class="label" for="stageName">Stage Name</label>
+          <input class="input" id="stageName" name="stageName" placeholder="Optional">
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <input class="input" type="email" id="email" name="email" placeholder="you@example.com">
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label class="label" for="whatsapp">WhatsApp</label>
+          <input class="input" id="whatsapp" name="whatsapp" placeholder="+62...">
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <input class="input" type="password" id="password" name="password" placeholder="Min. 6 characters">
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label class="label" for="confirmPassword">Confirm Password</label>
+          <input class="input" type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password">
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="field">
+          <label class="label" for="age">Age</label>
+          <input class="input" type="number" min="5" max="120" id="age" name="age" placeholder="e.g. 19">
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label class="label" for="city">City</label>
+          <input class="input" id="city" name="city" placeholder="e.g. Palangkaraya">
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="voiceType">Voice Type</label>
+        <select class="select" id="voiceType" name="voiceType"></select>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="experience">Experience</label>
+        <textarea class="textarea" id="experience" name="experience" placeholder="Voice acting / dubbing experience, if any"></textarea>
+      </div>
+
+      <div class="form-row-2">
+        <div class="field">
+          <label class="label" for="equipment">Equipment</label>
+          <input class="input" id="equipment" name="equipment" placeholder="e.g. Condenser mic, audio interface">
+        </div>
+        <div class="field">
+          <label class="label" for="software">Software</label>
+          <input class="input" id="software" name="software" placeholder="e.g. Audacity, Adobe Audition">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="aboutMe">About Me</label>
+        <textarea class="textarea" id="aboutMe" name="aboutMe" placeholder="Tell us a bit about yourself"></textarea>
+      </div>
+
+      <div class="terms-box">
+        <strong>Voluntary Participation Notice</strong><br><br>
+        HAR Animasi saat ini masih dalam tahap pengembangan dan channel kami masih berkembang. Saat ini HAR Animasi belum memiliki pemasukan yang stabil.<br><br>
+        Oleh karena itu, untuk sementara waktu, keterlibatan sebagai Voice Actor dilakukan secara sukarela dan belum mendapatkan gaji, honorarium, atau pembayaran.<br><br>
+        Apabila di kemudian hari HAR Animasi telah memperoleh penghasilan dari produksi atau kegiatan yang berkaitan dengan karya, maka ketentuan mengenai kompensasi dapat dibicarakan dan dipertimbangkan sesuai dengan kondisi dan kesepakatan yang berlaku pada saat itu.<br><br>
+        Dengan mendaftar sebagai Voice Actor, calon Voice Actor menyatakan telah membaca dan memahami ketentuan tersebut.
+      </div>
+
+      <div class="field">
+        <label class="checkbox-row">
+          <input type="checkbox" id="termsAccepted" name="termsAccepted">
+          <span>Saya memahami bahwa saat ini HAR Animasi masih berkembang dan belum memiliki pemasukan yang stabil, sehingga posisi Voice Actor bersifat sukarela dan belum mendapatkan gaji/honorarium. Saya memahami bahwa apabila HAR Animasi telah memperoleh penghasilan, ketentuan kompensasi dapat dibicarakan dan dipertimbangkan sesuai kondisi dan kesepakatan yang berlaku.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mt-16">CREATE ACCOUNT</button>
+    </form>
+
+    <div class="auth-foot">Already have an account? <a href="login">Login here</a></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="auth.js"></script>
+<script>initRegisterPage();</script>
+</body>
+</html>
