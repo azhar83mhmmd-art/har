@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Login — HAR Animasi</title>
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a href="index" class="brand" style="justify-content:center; margin-bottom:24px;">
+      <img src="assets/logo.png" class="auth-logo" alt="HAR Animasi">
+    </a>
+    <h1>Welcome Back</h1>
+    <p class="sub">Login to continue your voice acting journey.</p>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label class="label" for="email">Email</label>
+        <input class="input" type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+        <div class="field-error"></div>
+      </div>
+      <div class="field">
+        <label class="label" for="password">Password</label>
+        <input class="input" type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password">
+        <div class="field-error"></div>
+      </div>
+      <div class="flex justify-between items-center mb-16" style="font-size:13px;">
+        <span></span>
+        <a href="#" id="forgotPasswordLink" class="text-secondary">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+    </form>
+
+    <div class="auth-foot">Don't have an account? <a href="register">Register here</a></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="auth.js"></script>
+<script>initLoginPage();</script>
+</body>
+</html>
