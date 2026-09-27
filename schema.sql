@@ -161,6 +161,8 @@ drop policy if exists profiles_insert on profiles;
 create policy profiles_insert on profiles for insert with check(id=auth.uid());
 drop policy if exists profiles_update on profiles;
 create policy profiles_update on profiles for update using(id=auth.uid() or is_admin());
+drop policy if exists profiles_delete on profiles;
+create policy profiles_delete on profiles for delete using(is_admin() and id<>auth.uid());
 
 drop policy if exists voice_samples_select on voice_samples;
 create policy voice_samples_select on voice_samples for select using(user_id=auth.uid() or is_admin());
