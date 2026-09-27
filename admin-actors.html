@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<title>Voice Actors — Admin — HAR Animasi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebarRoot"></div>
+<div class="app-sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="app-main">
+  <header class="app-topbar" id="topbarRoot"></header>
+
+  <div class="app-content" id="pageContent">
+    <div class="section-toolbar">
+      <div class="page-header" style="margin-bottom:0;">
+        <h1>VOICE ACTORS</h1>
+        <p class="text-secondary">Everyone registered on HAR Animasi.</p>
+      </div>
+      <div class="search-input-wrap">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="input" id="actorSearchInput" placeholder="Search by name or city...">
+      </div>
+    </div>
+
+    <div id="actorsTableWrap">
+      <div class="card skeleton" style="height:320px;"></div>
+    </div>
+  </div>
+</main>
+
+<div id="modalRoot"></div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+<script src="admin.js"></script>
+<script>initAdminActors();</script>
+</body>
+</html>
